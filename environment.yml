@@ -1,0 +1,20 @@
+name: ieor-180-project
+channels:
+  - conda-forge
+  - defaults
+  - r
+dependencies:
+  - python
+  - ipykernel
+  - r-base
+  - r-essentials
+  - nb_conda
+  - jupyter_contrib_nbextensions
+  - numpy
+  - pandas
+  - scipy
+  - seaborn
+  - matplotlib
+  - scikit-learn
+  - r-doParallel
+
