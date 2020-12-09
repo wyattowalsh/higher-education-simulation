@@ -3,17 +3,19 @@ import numpy as np
 
 class Environment:
 
-	def __init__(self, routine, ideal_routine, influences_between_groups, choice_frequency):
-		self.routine = routine
-		self.ideal_routine = ideal_routine
+	def __init__(self, initial_routine, influences_between_groups, negotiation_frequency,
+				 initial_group_decisions):
+		self.routine = initial_routine
 		self.time = 0
 		self.agents = {}
 		self.influences = influences_between_groups
-		self.choice_frequency = choice_frequency
-		self.data = {'Organizational Routine': [[routine]],
+		self.negotiation_frequency = negotiation_frequency
+		self.group_decisions = initial_group_decisions
+		self.data = {'Input Parameters': []
+					'Organizational Routine': [[initial_routine]],
 					'Influence Between Groups': [[influences_between_groups]],
-					'Choice Frequency': [[choice_frequency]],
-					'Group Decisions': [],
+					'Negotiation Frequency': [[negotiation_frequency]],
+					'Group Decisions': [[initial_group_decisions]],
 					'Group Means': [],
 					'Group SDs': [],
 					'Time': [[0]]} 
@@ -22,26 +24,12 @@ class Environment:
 		''' Agent dictionary should be in such a form such that the key relates to the type, with values
 		in the form of a list such as: [number_of_agents, choice_frequency, group_influence, 
 	             change_capacity, feedback_proximity] '''
+	    self.data['Input Parameters'] += agents_dictionary
 		for key in agents_dictionary.keys():
-			self.agents[key] = [agent.Agent(key, i + 1, self, 
-			                    agents_dictionary[key][1], agents_dictionary[key][2], 
-			                    agents_dictionary[key][3], agents_dictionary[key][4],
-			                    agents_dictionary[key][5], agents_dictionary[key][6],
-			                    agents_dictionary[key][7], agents_dictionary[key][8])
-								for i in range(agents_dictionary[key][0])]
-
-	def give_feedback(self, ideal_routine):
-		if ideal_routine - 2 <= self.routine <= ideal_routine + 2:
-		 	feedback = 1.0
-		elif ideal_routine - 10 <= self.routine <= ideal_routine + 10:
-			feedback = 0.5
-		elif ideal_routine - 20 <= self.routine <= ideal_routine + 20:
-			feedback = 0.25
-		elif ideal_routine - 30 <= self.routine <= ideal_routine + 30:
-			feedback = 0.1
-		else:
-			feedback = 0.05
-		return feedback
+			num_agents = agents_dictionary[key][0]
+			agent_parameters = agents_dictionary[key][1:]
+			self.agents[key] = [agent.Agent(key, i + 1, self, *agent_parameters)
+								for i in range(num_agents)]
 
 	def negotiate(self):
 		group_decisions = []
@@ -49,9 +37,10 @@ class Environment:
 			agents = self.agents[key]
 			group_decision = sum([x.routine * x.group_influence for x in agents])
 			group_decisions += [group_decision]
-		self.real_routine = sum([a*b for a,b in zip(group_decisions, self.influences)])
+		self.real_routine = sum([a*b for a,b in zip(group_decisions, self.influences_between_groups)])
 		self.data['Organizational Routine'] += [self.real_routine]
 		self.data['Group Decisions'] += [group_decisions]
+		self.group_decisions = group_decisions
 
 	# def negotiate_pre(self):
 	# 	group_decisions = []
