@@ -1,4 +1,4 @@
-# Agent-Based Simulation Modeling of Higher Education Institutions
+# Conceptualizing Higher Education Institutions Through the Lens of Organizational Behavior: An Agent-Based Simulation Study
 --- 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wyattowalsh/higher-education-simulation/HEAD?filepath=nb.ipynb)
 
