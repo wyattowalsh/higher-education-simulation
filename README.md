@@ -37,7 +37,7 @@ macOS or Linux users: It is recommended to use the [Homebrew system](https://bre
 
 ##### Do you have Homebrew Installed?
 
-In your command prompt (i.e. `Terminal`) use a statement such as: `brew help`
+In your command prompt (i.e. *Terminal*) use a statement such as: `brew help`
 
 If this errored, move on to the next section.
 
