@@ -1,5 +1,7 @@
 # Agent-Based Simulation Modeling of Higher Education Institutions
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wyattowalsh/higher-education-simulation/HEAD?filepath=nb.ipynb)
+
 ## Table of Contents
 - [Introduction](#introduction)
 - [Explanation of Repository Contents](#explanation-of-repository-contents)
