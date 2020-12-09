@@ -50,4 +50,50 @@
    z -->|"Given to Customer"|1
 
 ```
+## HEI Model Overview
+```
+graph LR
+   subgraph HEI
+   org[Institutional Policies and Routines]
+   subgraph Students
+   stus[Group Routine]
+   stu[Particular Ideal Routine]
+   end 
+   subgraph Faculty
+  
+   facs[Group Routine]
+   fac[Particular Ideal Routine]
+   end
+
+
+   subgraph Administration
+   admins[Group Routine]
+   admin[Particular Ideal Routine]
+   end
+   subgraph "Other Stakeholders"
+   stakes[Group Routine]
+   stake[Particular Ideal Routine]
+   end
+   end
+   ex_inf_stu[External Influences]
+   ex_inf_fac[External Influences]
+   ex_inf_admin[External Influences]
+   ex_inf_other[External Influences]
+
+   ex_inf_stu ---->stu
+   ex_inf_fac ---->fac
+   ex_inf_admin ----> admin
+   ex_inf_other ----> stake
+
+   stu ---->|"Negotiate Within Groups"| stus
+   fac ---->|"Negotiate Within Groups"| facs
+   admin ---->|"Negotiate Within Groups"| admins
+   stake ---->|"Negotiate Within Groups"| stakes
+
+
+   stus & facs & admins & stakes -->|"Negotiate Between Groups"| org
+
+   org -------> stu & fac & admin & stake
+
+```
    
