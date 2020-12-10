@@ -3,52 +3,46 @@ import numpy as np
 
 class Environment:
 
-	def __init__(self, initial_routine, influences_between_groups, negotiation_frequency,
-				 initial_group_decisions):
-		self.routine = initial_routine
+	def __init__(self, intra_group_influence, inter_group_influence, negotiation_frequency, agents_dictionary):
 		self.time = 0
 		self.agents = {}
-		self.influences = influences_between_groups
+		self.influences = inter_group_influence
 		self.negotiation_frequency = negotiation_frequency
-		self.group_decisions = initial_group_decisions
-		self.data = {'Input Parameters': []
-					'Organizational Routine': [[initial_routine]],
-					'Influence Between Groups': [[influences_between_groups]],
-					'Negotiation Frequency': [[negotiation_frequency]],
-					'Group Decisions': [[initial_group_decisions]],
-					'Group Means': [],
-					'Group SDs': [],
-					'Time': [[0]]} 
 
-	def add_agents(self, agents_dictionary):
-		''' Agent dictionary should be in such a form such that the key relates to the type, with values
-		in the form of a list such as: [number_of_agents, choice_frequency, group_influence, 
-	             change_capacity, feedback_proximity] '''
-	    self.data['Input Parameters'] += agents_dictionary
-		for key in agents_dictionary.keys():
+		for j, key in enumerate(agents_dictionary.keys()):
 			num_agents = agents_dictionary[key][0]
 			agent_parameters = agents_dictionary[key][1:]
-			self.agents[key] = [agent.Agent(key, i + 1, self, *agent_parameters)
+			self.agents[key] = [agent.Agent(self, key, i + 1, intra_group_influence[j][i], *agent_parameters)
 								for i in range(num_agents)]
+		self.data = {
+		'Input Parameters': {
+			'Agent': agents_dictionary,
+			'Environment': {
+				'Inter-Group Influences': inter_group_influence,
+				'Intra-Group Influences': intra_group_influence,
+				'Negotiation Frequency': negotiation_frequency}},
+		'Time Evolving Parameters': {
+			'Organizational Routine': [],
+			'Group Decisions': [],
+			'Group Means': [],
+			'Group SDs': [],
+			'Time': []}}
 
+		self.negotiate()
+		self.get_data()
+		
 	def negotiate(self):
 		group_decisions = []
 		for key in self.agents.keys():
 			agents = self.agents[key]
-			group_decision = sum([x.routine * x.group_influence for x in agents])
-			group_decisions += [group_decision]
-		self.real_routine = sum([a*b for a,b in zip(group_decisions, self.influences_between_groups)])
-		self.data['Organizational Routine'] += [self.real_routine]
-		self.data['Group Decisions'] += [group_decisions]
+			routines = np.transpose(np.array([x.routine  for x in agents]))
+			group_influences = np.array([x.group_influence for x in agents])
+			group_decision = routines.dot(group_influences)
+			group_decisions += [[group_decision]]
+		self.routine = np.transpose(np.array(group_decisions)).dot(self.influences)
+		self.data['Time Evolving Parameters']['Organizational Routine'] += [[self.routine]]
+		self.data['Time Evolving Parameters']['Group Decisions'] += [[group_decisions]]
 		self.group_decisions = group_decisions
-
-	# def negotiate_pre(self):
-	# 	group_decisions = []
-	# 	students = self.agents['Students']
-	# 	faculty = self.agents['Faculty']
-	# 	students_decision = sum([x.routine * x.group_influence for x in students])
-	# 	faculty_decision = 	sum([x.routine * x.group_influence for x in faculty])
-	# 	overall_decision = students_decision
 
 	def get_data(self):
 		means = {}
@@ -57,14 +51,14 @@ class Environment:
 			routines = [x.routine for x in self.agents[key]]
 			means[key] = np.mean(routines)
 			sds[key] = np.std(routines)
-		self.data['Group Means'] += [means]
-		self.data['Group SDs'] += [sds]
-		self.data['Time'] += [self.time]
+		self.data['Time Evolving Parameters']['Group Means'] += [means]
+		self.data['Time Evolving Parameters']['Group SDs'] += [sds]
+		self.data['Time Evolving Parameters']['Time'] += [self.time]
 
 	def step(self):
-		[[x.variation(self) for x in self.agents[key]] for key in self.agents.keys()]
+		[[[x.variation()] for x in self.agents[key]] for key in self.agents.keys()]
 		self.get_data()
-		if self.time % self.choice_frequency == 0:
+		if self.time % self.negotiation_frequency == 0:
 			self.negotiate()
 		self.time += 1
 
