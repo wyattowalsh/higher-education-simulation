@@ -40,6 +40,8 @@ class Agent():
 			self.inertial_clock == 0
 		self.routine = guess
 
+		'''consider instead of individual guessing conducting hypothesis test'''
+
 	def variation(self, inertial_constant=5, eq_tolerance=0.025, change_tolerance=0.5, num_iters = 2500):
 		sources_of_influence = np.vstack([self.external_influence, \
 		                                 np.concatenate(self.environment.group_decisions, axis =0)])
