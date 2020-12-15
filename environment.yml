@@ -10,4 +10,5 @@ dependencies:
   - "dvc[gdrive]"
   - isort
   - nbdime
+  - scikit-learn
 
