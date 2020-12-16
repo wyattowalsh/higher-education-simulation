@@ -5,6 +5,6 @@ def calculate_tvd(probability_set_0, probability_set_1):
 
 def normalize(input_list):
 	array = np.array(input_list)
-	normal = array/sum(array)
+	normal = np.divide(array, np.sum(array))
 	return normal.tolist()
 

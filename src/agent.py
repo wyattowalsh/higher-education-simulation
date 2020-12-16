@@ -20,7 +20,7 @@ class Agent():
 
 
 	def change_opinion(self, compiled_influence, inertial_constant, eq_tolerance, change_tolerance):
-		def binary_search(level, guess, lower_bound, upper_bound, tolerance=0.05):
+		def binary_search(level, guess, lower_bound, upper_bound, tolerance=0.04):
 			level = level + 1
 			TVD_guess = utils.calculate_tvd(self.routine[0], guess)
 			error = scaled_by_intertia - TVD_guess

@@ -85,7 +85,7 @@ class Model():
 							[0.75, 0.203, 0.017, 0.003, 0.027]
 							]
 
-		flexi_grid =  [0.2, 0.4, 0.6, 0.8]
+		flexi_grid =  [0.25, 0.5, 0.75]
 		flexi_grid_dict = dict(zip(stakeholders[0], [flexi_grid] * 4))
 		combinations = list(grid(flexi_grid_dict))
 		opinion_flexibilities = [list(x.values()) for x in combinations]
@@ -97,7 +97,7 @@ class Model():
 		param_grid = {
 			'stakeholders': [stakeholders],
 			'number_of_agents': [number_of_agents],
-			'negotiation_frequency': [negotiation_frequency],
+			'negotiation_frequency': negotiation_frequency,
 		    'inter_group_influences': inter_group_influences,
 		    'intra_group_influences': [self.intra_group_influences],
 		    'renewal_frequencies': renewal_frequencies,
@@ -113,8 +113,10 @@ class Model():
 
 	def run_experiment(self, experiment_number, time_steps):
 		self.environment.simulate(time_steps)
+		# for key in self.environment.data.keys():
+		# 	print(key, len(self.environment.data[key]))
 		self.environment.data = pd.DataFrame.from_dict(self.environment.data)
-		self.environment.data.to_json('data/raw/experiment_{}.json'.format(experiment_number), 'columns')
+		self.environment.data.to_json('data/raw/experiment_{}.json'.format(experiment_number), 'records')
 		# print('Experiment {} successfully completed at {} and saved to data/raw/experiment_{}.json'.\
 		#       format(experiment_number,datetime.now().strftime("%H:%M:%S"), experiment_number))
 
