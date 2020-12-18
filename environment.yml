@@ -4,6 +4,7 @@ channels:
   - defaults
 dependencies:
   - python
+  - jupyter
   - ipykernel
   - nb_conda
   - jupyter_contrib_nbextensions
@@ -11,4 +12,12 @@ dependencies:
   - isort
   - nbdime
   - scikit-learn
+  - pyspark
+  - pyarrow
+  - conda-pack
+  - seaborn
+  - matplotlib
+  - ipywidgets
+  - shap
+
 
