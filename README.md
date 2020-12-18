@@ -6,6 +6,8 @@ Link to cloud hosted simulation experiment data analysis and modelling notebook:
 
 Link to project paper: 
 
+Link to datasets: [HEI Simulation Datasets](https://drive.google.com/drive/folders/1Wm6Am1LubhPjelnSdu8cVUVhQjOkQ36n?usp=sharing)
+
 ---
 
 ## Explanation of Repository Contents
