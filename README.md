@@ -9,22 +9,22 @@ Link to project paper:
 ---
 
 ## Explanation of Repository Contents
-.
-├── README.md     &emsp;                  This file <br>
-├── environment.yml     &emsp;            Conda environment configuration file (ssed to load project dependencies) <br>
-├── nb.ipynb                  &emsp;      Jupyter Notebook used for data analysis and modelling (hosted at the above Binder link) <br>
-├── .gitignore            &emsp;          Git file used to ignore non-repo local files  <br>
-└── **src**                  &emsp;       Directory containing custom scripts     <br>
-&emsp;    ├── \_\_init\_\_.py <br>
- &emsp;   ├── agent.py        &emsp;            Agent class definition (agent instantiation and opinion variation) <br>
- &emsp;   ├── data_functions.py     &emsp;      Helpful functions to manipulate data <br>
- &emsp;   ├── data_operations.py    &emsp;      Main data file used to prouduce data (utilizes Apache Spark) <br>
-  &emsp;  ├── data_processing.py    &emsp;      Short script to fix time data writing issue in simulation <br>
-  &emsp;  ├── environment.py       &emsp;       Environment class definiton (establishes agents, holds data, increments time, conducts intra and inter group negotiations) <br>
- &emsp;   ├── main.py        &emsp;             Script to run collection of experiments <br>
-  &emsp;  ├── model.py      &emsp;              Model class definition (sets enviroment, generates collection of experiment parameters, conducts experiments) <br>
- &emsp;   ├── utilities.py     &emsp;           Helpful functions used throughout simulation <br>
-   &emsp; └── visualization.md     &emsp;      Mermaid markdown snippet dump for flowcharts <br>
+. <br>
+├── README.md     &emsp;                  *This file* <br>
+├── environment.yml     &emsp;            *Conda environment configuration file (ssed to load project dependencies)* <br>
+├── nb.ipynb                  &emsp;      *Jupyter Notebook used for data analysis and modelling (hosted at the above Binder link)* <br>
+├── .gitignore            &emsp;          *Git file used to ignore non-repo local files*  <br>
+└── **src**                  &emsp;       *Directory containing custom scripts*     <br>
+&emsp;  &emsp;  ├── \_\_init\_\_.py <br>
+ &emsp;  &emsp; ├── agent.py        &emsp;            *Agent class definition (agent instantiation and opinion variation)* <br>
+ &emsp;  &emsp; ├── data_functions.py     &emsp;      *Helpful functions to manipulate data* <br>
+ &emsp;  &emsp; ├── data_operations.py    &emsp;      *Main data file used to prouduce data (utilizes Apache Spark)* <br>
+  &emsp; &emsp; ├── data_processing.py    &emsp;      *Short script to fix time data writing issue in simulation* <br>
+  &emsp; &emsp; ├── environment.py       &emsp;       *Environment class definiton (establishes agents, holds data, increments time, conducts group negotiations)* <br>
+ &emsp;  &emsp; ├── main.py        &emsp;             *Script to run collection of experiments* <br>
+  &emsp; &emsp; ├── model.py      &emsp;              *Model class definition (sets enviroment, generates collection of experiment parameters, conducts experiments)* <br>
+ &emsp;   &emsp; ├── utilities.py     &emsp;           *Helpful functions used throughout simulation* <br>
+   &emsp; &emsp; └── visualization.md     &emsp;      *Mermaid markdown snippet dump for flowcharts* <br>
     
 ----
 ## Instructions for Usage
