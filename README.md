@@ -1,23 +1,35 @@
-# Conceptualizing Higher Education Institutions Through the Lens of Organizational Behavior: An Agent-Based Simulation Study
---- 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wyattowalsh/higher-education-simulation/HEAD?filepath=nb.ipynb)
-
-## Table of Contents
-- [Introduction](#Introduction)
-- [Explanation of Repository Contents](#Explanation-of-Repository-Contents)
-- [Instructions for Usage](#Instructions-for-Usage)
+# Conceptualizing Higher Education Institutions: <br> An Agent-Based Modelling Approach
 
 --- 
-## Introduction
 
-This project serves to better understand the organizational behavior of higher education institutes (HEIs). Recent advances in organizational behavior theory have shed light on the notion of coevolution of organizations -- how do the policies and routines of an organization evolve with an ever-evolving customer base? By leveraging an agent-based modeling paradigm, insights regarding instiutional policies can be gleaned from simulation. 
+Link to cloud hosted simulation experiment data analysis and modelling notebook: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wyattowalsh/higher-education-simulation/HEAD?filepath=nb.ipynb)
+
+Link to project paper: 
 
 ---
+
 ## Explanation of Repository Contents
+.
+├── README.md     &emsp;                  This file <br>
+├── environment.yml     &emsp;            Conda environment configuration file (ssed to load project dependencies) <br>
+├── nb.ipynb                  &emsp;      Jupyter Notebook used for data analysis and modelling (hosted at the above Binder link) <br>
+├── .gitignore            &emsp;          Git file used to ignore non-repo local files  <br>
+└── **src**                  &emsp;       Directory containing custom scripts     <br>
+&emsp;    ├── \_\_init\_\_.py <br>
+ &emsp;   ├── agent.py        &emsp;            Agent class definition (agent instantiation and opinion variation) <br>
+ &emsp;   ├── data_functions.py     &emsp;      Helpful functions to manipulate data <br>
+ &emsp;   ├── data_operations.py    &emsp;      Main data file used to prouduce data (utilizes Apache Spark) <br>
+  &emsp;  ├── data_processing.py    &emsp;      Short script to fix time data writing issue in simulation <br>
+  &emsp;  ├── environment.py       &emsp;       Environment class definiton (establishes agents, holds data, increments time, conducts intra and inter group negotiations) <br>
+ &emsp;   ├── main.py        &emsp;             Script to run collection of experiments <br>
+  &emsp;  ├── model.py      &emsp;              Model class definition (sets enviroment, generates collection of experiment parameters, conducts experiments) <br>
+ &emsp;   ├── utilities.py     &emsp;           Helpful functions used throughout simulation <br>
+   &emsp; └── visualization.md     &emsp;      Mermaid markdown snippet dump for flowcharts <br>
+    
 ----
 ## Instructions for Usage
 
-`environment.yml` and `packages.txt` files can be found in the repository's root directory and used to install necessary project dependencies. If able to successfully use these files to configure your computing environment, then launch Jupyter Notebook from your command prompt and navigate to `nb.ipynb`. If unable to successfully configure your computing environment refer to the sections below to install necessary system tools and package dependencies. The following sections may be cross-platform compatibile in several places, however is geared towards macOS<sup>[1](#footnote1)</sup>.
+`environment.yml`  can be found in the repository's root directory and used to install necessary project dependencies. If able to successfully configure your computing environment, then launch Jupyter Notebook from your command prompt and navigate to `nb.ipynb`. If unable to successfully configure your computing environment refer to the sections below to install necessary system tools and package dependencies. The following sections may be cross-platform compatibile in several places, however is geared towards macOS<sup>[1](#footnote1)</sup>.
 
 #### Do you have the Conda system installed?
 
