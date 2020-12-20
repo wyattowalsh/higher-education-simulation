@@ -4,9 +4,9 @@
 
 Link to cloud hosted simulation experiment data analysis and modelling notebook: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/wyattowalsh/higher-education-simulation/HEAD?filepath=nb.ipynb)
 
-Link to project paper: 
+Link to project paper: [Conceptualizing Higher Education Institutions Paper](https://github.com/wyattowalsh/higher-education-simulation/blob/master/Conceptualizing_Higher_Education_Institutions__An_Agent_Based_Modelling_Approach.pdf)
 
-Link to datasets: [HEI Simulation Datasets](https://drive.google.com/drive/folders/1Wm6Am1LubhPjelnSdu8cVUVhQjOkQ36n?usp=sharing)
+Link to datasets: [Experiment 1](https://www.dropbox.com/s/gq8gqxqvrqlssf3/experiment_1.json?dl=0) and  [All Experiments](https://www.dropbox.com/s/gk31rdjnvzusql6/all_data.csv?dl=0)
 
 ---
 
