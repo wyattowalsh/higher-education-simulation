@@ -8,6 +8,8 @@ Link to project paper: [Conceptualizing Higher Education Institutions Paper](htt
 
 Link to datasets: [Experiment 1](https://www.dropbox.com/s/gq8gqxqvrqlssf3/experiment_1.json?dl=0) and  [All Experiments](https://www.dropbox.com/s/gk31rdjnvzusql6/all_data.csv?dl=0)
 
+![](notebook_preview.gif)
+
 ---
 
 ## Explanation of Repository Contents
