@@ -13,6 +13,7 @@ Link to datasets: [Experiment 1](https://www.dropbox.com/s/gq8gqxqvrqlssf3/exper
 ## Explanation of Repository Contents
 . <br>
 ├── README.md     &emsp;                  *This file* <br>
+├── paper.pdf   &emsp;                    *Project Write-Up* <br>
 ├── environment.yml     &emsp;            *Conda environment configuration file (ssed to load project dependencies)* <br>
 ├── nb.ipynb                  &emsp;      *Jupyter Notebook used for data analysis and modelling (hosted at the above Binder link)* <br>
 ├── .gitignore            &emsp;          *Git file used to ignore non-repo local files*  <br>
